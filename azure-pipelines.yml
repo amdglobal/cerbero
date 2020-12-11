@@ -1,0 +1,27 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- 1.18
+
+pool:
+  vmImage: windows-latest
+steps:
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.x'
+    addToPath: true
+    architecture: 'x64'
+- script: bash -c 'git config --global core.autocrlf false'
+  displayName: 'Configure Git'
+- script: bash -c './cerbero-uninstalled -c config/win32.cbc -v visualstudio bootstrap'
+  displayName: 'Bootstrap'
+- script: bash -c './cerbero-uninstalled -c config/win32.cbc -v visualstudio package gstreamer-1.0'
+  displayName: 'Package'
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: 'gstreamer-1.0-mingw-x86-1.16.0.1.tar.bz2'
+    artifact: 'gstreamer-windows'
+    publishLocation: 'pipeline'

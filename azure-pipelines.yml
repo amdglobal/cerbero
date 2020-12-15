@@ -14,6 +14,12 @@ steps:
     versionSpec: '3.x'
     addToPath: true
     architecture: 'x64'
+- task: ChocolateyInstaller@1
+  inputs:
+    upgradeIfNeeded: true
+- task: ChocoInstallPackage@1
+  inputs:
+    packageId: 'mingw-get'
 - script: bash -c 'git config --global core.autocrlf false'
   displayName: 'Configure Git'
 - script: bash -c './cerbero-uninstalled -c config/win32.cbc -v visualstudio bootstrap'

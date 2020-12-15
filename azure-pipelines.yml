@@ -16,7 +16,7 @@ steps:
     architecture: 'x64'
 - task: ChocolateyInstaller@1
   inputs:
-    upgradeIfNeeded: true
+    upgradeIfNeeded: false
 - task: ChocoInstallPackage@1
   inputs:
     packageId: 'mingw-get'

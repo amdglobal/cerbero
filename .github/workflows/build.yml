@@ -32,11 +32,10 @@ jobs:
         uses: crazy-max/ghaction-chocolatey@v1
         with:
           args: install -y amd-mingw-get --version=0.6.3
-      - name: Extend PATH
+      - name: Initialize git
         shell: powershell
         run: |
-            echo C:\tools\mingw64\bin >> $GITHUB_PATH
-            echo C:\tools\mingw64\msys\1.0\bin >> $GITHUB_PATH
+          git config --global core.autocrlf false
       - name: Install MSYS
         shell: powershell
         run: mingw-get install msys-base mingw32-base mingw-developer-tools

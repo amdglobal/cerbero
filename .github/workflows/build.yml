@@ -31,7 +31,7 @@ jobs:
       - name: Install mingw-get
         uses: crazy-max/ghaction-chocolatey@v1
         with:
-          args: install -y amd-mingw-get
+          args: install -y amd-mingw-get --version 0.6.3
       # Runs a single command using the runners shell
       - name: Bootstrap
         shell: powershell

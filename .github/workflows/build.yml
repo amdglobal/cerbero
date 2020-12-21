@@ -25,9 +25,10 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Initialize git
         shell: powershell
-        run: |
-          git config --global core.autocrlf false
+        run: git config --global core.autocrlf false
       - uses: actions/checkout@v2
+      - name: Setup Perl
+        uses: shogo82148/actions-setup-perl@v1.8.3
       - name: Setup Python
         uses: actions/setup-python@v2
         with:
@@ -39,6 +40,11 @@ jobs:
       - name: Install MSYS
         shell: powershell
         run: mingw-get install msys-base mingw32-base mingw-developer-tools
+        env:
+          PATH: C:\tools\mingw64\bin;C:\tools\mingw64\msys\1.0\bin;${PATH}
+      - name: Reinitialize git
+        shell: powershell
+        run: git config --global core.autocrlf false
         env:
           PATH: C:\tools\mingw64\bin;C:\tools\mingw64\msys\1.0\bin;${PATH}
       - name: Bootstrap

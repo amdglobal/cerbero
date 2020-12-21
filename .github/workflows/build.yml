@@ -29,6 +29,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: Setup Perl
         uses: shogo82148/actions-setup-perl@v1.8.3
+        with:
+          distribution: strawberry
       - name: Setup Python
         uses: actions/setup-python@v2
         with:

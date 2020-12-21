@@ -50,3 +50,5 @@ jobs:
           git config --global core.autocrlf false
           python ./cerbero-uninstalled -c config/win32.cbc -v visualstudio bootstrap
           python ./cerbero-uninstalled -c config/win32.cbc -v visualstudio package gstreamer-1.0
+        env:
+          PATH: C:\tools\mingw64\bin;C:\tools\mingw64\msys\1.0\bin;${env:PATH}

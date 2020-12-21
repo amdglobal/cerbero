@@ -44,17 +44,9 @@ jobs:
         run: mingw-get install msys-base mingw32-base mingw-developer-tools
         env:
           PATH: C:\tools\mingw64\bin;C:\tools\mingw64\msys\1.0\bin;${env:PATH}
-      - name: Initialize git
-        shell: C:\tools\mingw64\msys\1.0\bin\bash.exe --login {0}
-        run: git config --global core.autocrlf false
-      - name: Bootstrap
-        shell: powershell
-        run: python ./cerbero-uninstalled -c config/win32.cbc -v visualstudio bootstrap
-        env:
-          PATH: C:\tools\mingw64\bin;C:\tools\mingw64\msys\1.0\bin;${env:PATH}
-
-      # Runs a set of commands using the runners shell
       - name: Build
-        run: python ./cerbero-uninstalled -c config/win32.cbc -v visualstudio package gstreamer-1.0
-        env:
-          PATH: C:\tools\mingw64\bin;C:\tools\mingw64\msys\1.0\bin;${env:PATH}
+        shell: C:\tools\mingw64\msys\1.0\bin\bash.exe --login {0}
+        run: |
+          git config --global core.autocrlf false
+          ./cerbero-uninstalled -c config/win32.cbc -v visualstudio bootstrap
+          ./cerbero-uninstalled -c config/win32.cbc -v visualstudio package gstreamer-1.0

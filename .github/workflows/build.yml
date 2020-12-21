@@ -48,5 +48,5 @@ jobs:
         shell: C:\tools\mingw64\msys\1.0\bin\bash.exe --login {0}
         run: |
           git config --global core.autocrlf false
-          ./cerbero-uninstalled -c config/win32.cbc -v visualstudio bootstrap
-          ./cerbero-uninstalled -c config/win32.cbc -v visualstudio package gstreamer-1.0
+          python ./cerbero-uninstalled -c config/win32.cbc -v visualstudio bootstrap
+          python ./cerbero-uninstalled -c config/win32.cbc -v visualstudio package gstreamer-1.0

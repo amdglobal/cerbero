@@ -27,8 +27,6 @@ jobs:
         shell: powershell
         run: git config --global core.autocrlf false
       - uses: actions/checkout@v2
-      - name: Setup Perl
-        uses: shogo82148/actions-setup-perl@v1.8.3
       - name: Setup Python
         uses: actions/setup-python@v2
         with:
@@ -37,6 +35,10 @@ jobs:
         uses: crazy-max/ghaction-chocolatey@v1
         with:
           args: install -y amd-mingw-get --version=0.6.3
+      - name: Install ActivePerl
+        uses: crazy-max/ghaction-chocolatey@v1
+        with:
+          args: install -y activeperl
       - name: Install MSYS
         shell: powershell
         run: mingw-get install msys-base mingw32-base mingw-developer-tools

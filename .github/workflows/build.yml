@@ -31,11 +31,10 @@ jobs:
       - name: Install mingw-get
         uses: crazy-max/ghaction-chocolatey@v1
         with:
-          args: install -y amd-mingw-get --version 0.6.3
-      - name: Add mingw-get to path
-        uses: myci-actions/append-to-path-windows@2
-        with:
-          path: C:\tools\mingw64
+          args: install -y amd-mingw-get --version=0.6.3
+      - name: Extend PATH
+        shell: powershell
+        run: echo C:\tools\mingw64 >> $GITHUB_PATH
       - name: Bootstrap
         shell: powershell
         run: python cerbero-uninstalled -c config/win32.cbc -v visualstudio bootstrap

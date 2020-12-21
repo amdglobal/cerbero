@@ -35,10 +35,10 @@ jobs:
         uses: crazy-max/ghaction-chocolatey@v1
         with:
           args: install -y amd-mingw-get --version=0.6.3
-      - name: Install ActivePerl
+      - name: Install Build Dependencies
         uses: crazy-max/ghaction-chocolatey@v1
         with:
-          args: install -y activeperl
+          args: install -y activeperl pkgconfiglite cmake
       - name: Install MSYS
         shell: powershell
         run: mingw-get install msys-base mingw32-base mingw-developer-tools

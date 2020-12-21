@@ -38,8 +38,8 @@ jobs:
             echo C:\tools\mingw64\bin >> $GITHUB_PATH
             C:\tools\mingw64\bin\mingw-get msys-base mingw32-base mingw-developer-tools
       - name: Bootstrap
-        shell: cmd
-        run: C:\MinGW\msys\1.0\msys.bat python cerbero-uninstalled -c config/win32.cbc -v visualstudio bootstrap
+        shell: powershell
+        run: python cerbero-uninstalled -c config/win32.cbc -v visualstudio bootstrap
 
       # Runs a set of commands using the runners shell
       - name: Build

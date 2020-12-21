@@ -23,6 +23,10 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Initialize git
+        shell: powershell
+        run: |
+          git config --global core.autocrlf false
       - uses: actions/checkout@v2
       - name: Setup Python
         uses: actions/setup-python@v2
@@ -32,10 +36,6 @@ jobs:
         uses: crazy-max/ghaction-chocolatey@v1
         with:
           args: install -y amd-mingw-get --version=0.6.3
-      - name: Initialize git
-        shell: powershell
-        run: |
-          git config --global core.autocrlf false
       - name: Install MSYS
         shell: powershell
         run: mingw-get install msys-base mingw32-base mingw-developer-tools

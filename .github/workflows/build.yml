@@ -35,8 +35,8 @@ jobs:
       - name: Extend PATH
         shell: powershell
         run: |
-            echo C:\tools\mingw64 >> $GITHUB_PATH
-            mingw-get msys-base mingw32-base mingw-developer-tools
+            echo C:\tools\mingw64\bin >> $GITHUB_PATH
+            C:\tools\mingw64\bin\mingw-get msys-base mingw32-base mingw-developer-tools
       - name: Bootstrap
         shell: cmd
         run: C:\MinGW\msys\1.0\msys.bat python cerbero-uninstalled -c config/win32.cbc -v visualstudio bootstrap

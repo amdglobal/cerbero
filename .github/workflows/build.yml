@@ -35,15 +35,13 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: 3.x
-      - name: Install mingw-get
-        uses: crazy-max/ghaction-chocolatey@v1
+      - name: Setup MinGW
+        uses: egor-tensin/setup-mingw@v2
         with:
-          args: install -y amd-mingw-get --version=0.6.3
-      - name: Install MSYS
-        shell: powershell
-        run: mingw-get install msys-base mingw32-base mingw-developer-tools
-        env:
-          PATH: C:\tools\mingw64\bin;C:\tools\mingw64\msys\1.0\bin;${env:PATH}
+            platform: x86
+            cygwin: 1
+            static: 1
+            cc: 1
       - name: Bootstrap
         shell: powershell
         run: python ./cerbero-uninstalled -c config/win32.cbc -v visualstudio bootstrap
